@@ -1,8 +1,8 @@
 class Desklog < Formula
   desc "Records what you do at your desk as time spans in a local sqlite file"
   homepage "https://github.com/wis-graph/desklog"
-  url "https://github.com/wis-graph/desklog/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "628315a234138e117e948964c87e628aea14000c4a250af13cc921406796460b"
+  url "https://github.com/wis-graph/desklog/archive/refs/tags/v0.1.3.tar.gz"
+  sha256 "3b7f67cfc73dce32038d4f07e9a05f0a5997e1fe73e422b40e462cf0dd379376"
   license "MIT"
   head "https://github.com/wis-graph/desklog.git", branch: "main"
 
