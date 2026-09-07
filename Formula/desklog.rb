@@ -1,15 +1,17 @@
 class Desklog < Formula
   desc "Records what you do at your desk as time spans in a local sqlite file"
   homepage "https://github.com/wis-graph/desklog"
-  url "https://github.com/wis-graph/desklog/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "e5d5b2bba24102a83b044d17dd8b815312fef13f80e55e86e7ec0bb99387344e"
+  url "https://github.com/wis-graph/desklog/releases/download/v0.3.0/desklog-0.3.0-macos-universal.tar.gz"
+  sha256 "e5bfa6d9a6565776582bae42a6a2864a2a8fca50b1c05152ffd88950cde13e6b"
+  version "0.3.0"
   license "MIT"
-  head "https://github.com/wis-graph/desklog.git", branch: "main"
 
-  depends_on "rust" => :build
+  # 미리 빌드해 Developer ID 로 서명·공증한 universal 바이너리를 받는다.
+  # 소스 빌드로 바꾸면 서명이 사라지고 화면 기록 권한을 판마다 다시 묻게 된다.
+  depends_on :macos
 
   def install
-    system "cargo", "install", *std_cargo_args
+    bin.install "desklog"
   end
 
   service do
