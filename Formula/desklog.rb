@@ -1,21 +1,24 @@
 class Desklog < Formula
   desc "Records what you do at your desk as time spans in a local sqlite file"
   homepage "https://github.com/wis-graph/desklog"
-  url "https://github.com/wis-graph/desklog/releases/download/v0.5.0/desklog-0.5.0-macos-universal.tar.gz"
-  sha256 "43376b26bc63e4195dcdb8c3036afc9d0a997af872ca30d3cd5ce78c98c5189a"
-  version "0.5.0"
+  url "https://github.com/wis-graph/desklog/releases/download/v0.5.1/desklog-0.5.1-macos-universal.tar.gz"
+  sha256 "79e63c2f915092e714b9f4f7f6d9dae71f9eaddfb2a9a061dd2d64461570a1cf"
+  version "0.5.1"
   license "MIT"
 
-  # 미리 빌드해 Developer ID 로 서명·공증한 universal 바이너리를 받는다.
-  # 소스 빌드로 바꾸면 서명이 사라지고 화면 기록 권한을 판마다 다시 묻게 된다.
+  # 미리 빌드해 Developer ID 로 서명·공증한 .app 번들을 받는다.
+  # 단독 실행파일이면 화면 기록 권한(TCC)을 판마다 다시 묻는다 — 번들이라야 식별자로 묶인다.
   depends_on :macos
 
   def install
-    bin.install "desklog"
+    libexec.install "desklog.app"
+    # CLI 는 번들 안 실행파일을 가리킨다. TCC 는 이 실행파일에서 번들을 거슬러 올라
+    # 안정적인 번들 식별자로 권한을 묶으므로, 판을 올려도 항목이 하나로 유지된다.
+    bin.install_symlink libexec/"desklog.app/Contents/MacOS/desklog"
   end
 
   service do
-    run [opt_bin/"desklog", "watch"]
+    run [opt_libexec/"desklog.app/Contents/MacOS/desklog", "watch"]
     keep_alive true
     log_path var/"log/desklog.log"
     error_log_path var/"log/desklog.log"
