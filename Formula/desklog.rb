@@ -1,9 +1,9 @@
 class Desklog < Formula
   desc "Records what you do at your desk as time spans in a local sqlite file"
   homepage "https://github.com/wis-graph/desklog"
-  url "https://github.com/wis-graph/desklog/releases/download/v0.4.0/desklog-0.4.0-macos-universal.tar.gz"
-  sha256 "c8b4719805eb811cc9c5842e57d2d7ffc509b1153d599daae6d5a6497e4fdbad"
-  version "0.4.0"
+  url "https://github.com/wis-graph/desklog/releases/download/v0.4.1/desklog-0.4.1-macos-universal.tar.gz"
+  sha256 "24df4e0525c53b937ac4f53bd97df5b688375b5cdd09da9cebae3f1791579e18"
+  version "0.4.1"
   license "MIT"
 
   # 미리 빌드해 Developer ID 로 서명·공증한 universal 바이너리를 받는다.
